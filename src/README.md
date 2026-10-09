@@ -48,3 +48,25 @@ The application uses a simple data model with meaningful identifiers:
    - Grade level
 
 All data is stored in memory, which means data will be reset when the server restarts.
+
+## Testing
+
+Run these commands from the repository root using your project Python environment:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pytest
+```
+
+The backend tests live in `tests/` and use FastAPI's `TestClient`, so no running
+server is required. Each test receives an isolated copy of the in-memory
+activities data, and the original data is restored afterward.
+
+To run only the API tests:
+
+```bash
+python -m pytest tests/test_app.py -q
+```
+
+On Windows, if the project environment is not activated, use
+`.\.venv\Scripts\python.exe` instead of `python`.
